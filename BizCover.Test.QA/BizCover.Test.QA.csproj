@@ -46,4 +46,11 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\RegisterNewUser.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+  </ItemGroup>
+
 </Project>
