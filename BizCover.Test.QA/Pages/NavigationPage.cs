@@ -10,12 +10,5 @@ namespace BizCover.Test.QA.Pages
         {
             Driver.Navigate().GoToUrl(ConfigSettings.TestCaseURL);
         }
-
-        private IWebElement SignInButton => Driver.FindControl(By.XPath("//a[@class='login']"));
-
-        public void NavigateToLoginPage()
-        {
-            SignInButton.Click();
-        }
     }
 }
