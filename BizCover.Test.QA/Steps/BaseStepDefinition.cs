@@ -13,6 +13,7 @@ namespace BizCover.Test.QA.Steps
     public class BaseStepDefinition
     {
         public static IWebDriver driver = null;
+ 
 
         [BeforeTestRun]
         private static void WarmUpIis()
