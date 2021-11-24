@@ -28,6 +28,18 @@ namespace BizCover.Test.QA.Pages
             FirstName.SendKeys(firstName);
             LastName.Clear();
             LastName.SendKeys(lastName);
+        }
+
+        public void EnterYourAddressDetails(string firstName = null, string lastName = null, string company = null, string address1 = null, string address2 = null, string city = null, string state = null, string postcode = null, string country = null)
+        {
+            FirstName.Clear();
+            FirstName.SendKeys(firstName);
+            LastName.Clear();
+            LastName.SendKeys(lastName);
+        }
+        
+        public void ClickCreateAccountButton()
+        {
             RegisterButton.Click();
         }
     }

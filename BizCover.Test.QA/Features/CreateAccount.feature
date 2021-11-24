@@ -11,11 +11,11 @@ Scenario: Navigate to the Create a New Account Page
 Scenario: Create a New Account
 	Given I am in the Sign In Page
 	When I Create An Account with an email
-	| Title | FirstName | LastName | EmailAddressUserName   | EmailAddressDomain | Password |
-	| Mr    | Test      | TestLast | bizcovertechnicaltests | bizcover.com.au    | test1234 |
+	| EmailAddress |
+	| bizcovertechnicaltests.unique@bizcover.com.au |
 	When I Register my Personal Information
-	| Title | FirstName | LastName | EmailAddressUserName   | EmailAddressDomain | Password |
-	| Mr    | Test      | TestLast | bizcovertechnicaltests | bizcover.com.au    | test1234 |
+	| Title | FirstName | LastName | EmailAddress | Password |
+	| Mr    | Test      | TestLast | bizcovertechnicaltests.unique@bizcover.com.au    | test1234 |
 	And I Register my Address Details
 	| FirstName | LastName | Company  | Address1      | Address2 | City   | State | PostCode | Country   | AdditionalInformation | HomePhone | MobilePhone | AssignAddressAlias |
 	| Test      | TestLast | bizcover | 1 Test Street | test1234 | Sydney | NSW   | 2000     | Australia |                       |           | 0404040404  | Home               |           
@@ -26,6 +26,6 @@ Scenario: Sign In with a Newly Created Account
 	Given I am in the home page of the system
 	When I select the Sign In option from the menu
 	And I sign in using a Newly Created Account
-	| EmailAddressUserName   | EmailAddressDomain | Password |
-	| bizcovertechnicaltests | bizcover.com.au    | test1234 |
+	| EmailAddress | Password |
+	| bizcovertechnicaltests.unique@bizcover.com.au  | test1234 |
 	Then I should be redirected to My Account Page
