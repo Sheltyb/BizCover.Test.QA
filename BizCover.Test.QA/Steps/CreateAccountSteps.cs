@@ -39,7 +39,7 @@ namespace BizCover.Test.QA.Steps
         public void WhenIRegisterMyPersonalInformation(Table table)
         {
             _ScenarioData = table.CreateDynamicInstance();
-            CreateAnAccountPage.EnterYourPersonalInformation((string)_ScenarioData.title, (string)_ScenarioData.FirstName, (string)_ScenarioData.LastName);
+            CreateAnAccountPage.EnterYourPersonalInformation((string)_ScenarioData.Title, (string)_ScenarioData.FirstName, (string)_ScenarioData.LastName);
         }
 
         [When(@"I Register my Address Details")]
@@ -53,13 +53,26 @@ namespace BizCover.Test.QA.Steps
         public void WhenIClickCreateAccount()
         {
             CreateAnAccountPage.ClickCreateAccountButton();
+
         }
 
         [Then(@"I should be redirected to My Account Page")]
         public void ThenIShouldBeRedirectedToMyAccountPage()
         {
-            _scenarioContext.Pending();
+            MyAccountPage.AssertAccountName();
         }
 
+        [Then(@"I should see the Sign In Page")]
+        public void ThenIShouldSeeTheSignInPage()
+        {
+            SignInPage.AssertSignInPage();
+        }
+
+ 
+        [When(@"I sign in using a Newly Created Account")]
+        public void WhenISignInUsingANewlyCreatedAccount(Table table)
+        {
+            _scenarioContext.Pending();
+        }
     }
 }

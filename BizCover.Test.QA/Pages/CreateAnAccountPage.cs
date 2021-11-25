@@ -42,5 +42,10 @@ namespace BizCover.Test.QA.Pages
         {
             RegisterButton.Click();
         }
+
+        public void CheckForValidationErrors()
+        {
+
+        }
     }
 }
