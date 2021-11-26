@@ -1,6 +1,7 @@
 ﻿using BizCover.Test.QA.Core;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace BizCover.Test.QA.Pages
 {
@@ -25,7 +26,7 @@ namespace BizCover.Test.QA.Pages
         private IWebElement City => Driver.FindControl(By.Id("city"));
         private IWebElement State => Driver.FindControl(By.Id("id_state"));
         private IWebElement PostCode => Driver.FindControl(By.Id("postcode"));
-        private IWebElement Country => Driver.FindControl(By.Id("country"));
+        private IWebElement Country => Driver.FindControl(By.Id("id_country"));
         
 
         private IWebElement RegisterButton => Driver.FindControl(By.Id("submitAccount"));
@@ -66,16 +67,15 @@ namespace BizCover.Test.QA.Pages
             Address2.SendKeys(address2);
             City.Clear();
             City.SendKeys(city);
-            
-            //State.Clear();
-            State.SendKeys(state);
+            // Select Country first so that the State field selects corresponding State
+            SelectElement countrySelector = new SelectElement(Country);
+            countrySelector.SelectByText(country);
+
+            SelectElement stateSelector = new SelectElement(State);
+            stateSelector.SelectByText(state);
 
             PostCode.Clear();
             PostCode.SendKeys(postcode.ToString());
-            //Country.Clear();
-            Country.SendKeys(country);
-
-
 
         }
 
