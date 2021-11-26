@@ -1,4 +1,5 @@
 ﻿using BizCover.Test.QA.Pages;
+using System;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -14,6 +15,12 @@ namespace BizCover.Test.QA.Steps
         private MyAccountPage MyAccountPage = new MyAccountPage();
         private dynamic _ScenarioData;
         private ScenarioContext _scenarioContext;
+        private FeatureContext _featureContext;
+        public string uniqueEmail;
+        public void CreateAccountFeatureContext(FeatureContext featureContext)
+        {
+            _featureContext = featureContext;
+        }
 
         public void StepDefinitions(ScenarioContext scenarioContext)
         {
@@ -28,18 +35,20 @@ namespace BizCover.Test.QA.Steps
             SignInPage.AssertSignInPage();
         }
 
-        [When(@"I Create An Account with an email")]
+        [When(@"I Create An Account with a unique email")]
         public void WhenICreateAnAccountWithAnEmail(Table table)
         {
             _ScenarioData = table.CreateDynamicInstance();
-            SignInPage.CreateAnAccount((string)_ScenarioData.EmailAddress);
+            uniqueEmail = (string)_ScenarioData.EmailAddress + string.Format("{0:d9}", DateTime.Now.Ticks / 10 % 1000000000);
+
+            SignInPage.CreateAnAccount(uniqueEmail);
         }
 
         [When(@"I Register my Personal Information")]
         public void WhenIRegisterMyPersonalInformation(Table table)
         {
             _ScenarioData = table.CreateDynamicInstance();
-            CreateAnAccountPage.EnterYourPersonalInformation((string)_ScenarioData.Title, (string)_ScenarioData.FirstName, (string)_ScenarioData.LastName);
+            CreateAnAccountPage.EnterYourPersonalInformation((string)_ScenarioData.Title, (string)_ScenarioData.FirstName, (string)_ScenarioData.LastName, (string)_ScenarioData.EmailAddress, (string)_ScenarioData.Password);
         }
 
         [When(@"I Register my Address Details")]
