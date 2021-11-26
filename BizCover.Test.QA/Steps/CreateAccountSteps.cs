@@ -54,8 +54,10 @@ namespace BizCover.Test.QA.Steps
         [When(@"I Register my Address Details")]
         public void WhenIRegisterMyAddressDetails(Table table)
         {
-            _ScenarioData = table.CreateDynamicInstance();
-            CreateAnAccountPage.EnterYourAddressDetails((string)_ScenarioData.FirstName, (string)_ScenarioData.LastName, (string)_ScenarioData.Company, (string)_ScenarioData.Address1, (string)_ScenarioData.Address2, (string)_ScenarioData.City, (string)_ScenarioData.State, (string)_ScenarioData.PostCode, (string)_ScenarioData.Country);
+            dynamic _ScenarioData = table.CreateDynamicInstance();
+            string postCode = _ScenarioData.PostCode.ToString();
+
+            CreateAnAccountPage.EnterYourAddressDetails((string)_ScenarioData.FirstName, (string)_ScenarioData.LastName, (string)_ScenarioData.Company, (string)_ScenarioData.Address1, (string)_ScenarioData.Address2, (string)_ScenarioData.City, (string)_ScenarioData.State, postCode, (string)_ScenarioData.Country);
         }
 
         [When(@"I click Create Account")]

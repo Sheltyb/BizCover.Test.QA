@@ -67,12 +67,12 @@ namespace BizCover.Test.QA.Pages
             City.Clear();
             City.SendKeys(city);
             
-            State.Clear();
+            //State.Clear();
             State.SendKeys(state);
 
             PostCode.Clear();
             PostCode.SendKeys(postcode.ToString());
-            Country.Clear();
+            //Country.Clear();
             Country.SendKeys(country);
 
 
